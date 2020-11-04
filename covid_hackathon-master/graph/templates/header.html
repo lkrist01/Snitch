@@ -1,0 +1,44 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">SMS data analytics</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+        <a class="nav-link" href="/">Home
+          <span class="sr-only">
+            {% if request.resolver_match.url_name == 'index' %}(current){% endif %}
+          </span>
+        </a>
+      </li>
+      <li class="nav-item {% if request.resolver_match.url_name == 'history' %}active{% endif %}">
+        <a class="nav-link" href="{% url 'history' %}">History
+          <span class="sr-only">
+            {% if request.resolver_match.url_name == 'history' %}(current){% endif %}
+          </span>
+        </a>
+      </li>
+      <li class="nav-item {% if request.resolver_match.url_name == 'individual_stats' %}active{% endif %}">
+        <a class="nav-link" href="{% url 'individual_stats' %}">Individual Statistics
+          <span class="sr-only">
+            {% if request.resolver_match.url_name == 'individual_stats' %}(current){% endif %}
+          </span>
+        </a>
+      </li>
+      <li class="nav-item {% if request.resolver_match.url_name == 'upload' %}active{% endif %}">
+        <a class="nav-link" href="{% url 'upload' %}">Upload Data
+          <span class="sr-only">
+            {% if request.resolver_match.url_name == 'upload' %}(current){% endif %}
+          </span>
+        </a>
+      </li>
+    </ul>
+    <form id="form-date" action="{% url 'index' %}" method="get" class="form-inline my-2 my-lg-0">
+      <input type="date" id="date-input" class="form-control mr-sm-2" placeholder="Select date" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
